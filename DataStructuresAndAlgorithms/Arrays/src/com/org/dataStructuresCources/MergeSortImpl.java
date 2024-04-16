@@ -1,0 +1,56 @@
+package com.org.dataStructuresCources;
+
+/* 
+Time Complexity of Shell Sort is O(nlogn)[base2] at Worst Case, 
+It is a Stable Sorting Algorithm */
+public class MergeSortImpl {
+
+	public static void main(String[] args) {
+
+		int[] intArray = { 21,35,-15,7,55,1,-22 };
+		
+		mergeSort(intArray, 0, intArray.length);
+		
+		for(int i = 0 ; i < intArray.length ; i++) {
+			System.out.println(intArray[i]);
+		}
+
+	}
+	
+	// { 21,35,-15,7,55,1,-22 }
+	public static void mergeSort(int[] intArray,int start, int end) {
+		
+		if(end - start < 2) {
+			return;
+		}
+		
+		int mid = (start + end) / 2;
+		mergeSort(intArray,start,mid);
+		mergeSort(intArray,mid,end);
+		merge(intArray,start,mid,end);
+	}
+	
+	// { 21,35,-15,7,55,1,-22 }
+	public static void merge(int[] intArray,int start, int mid, int end) {
+		
+		if(intArray[mid -1] < intArray[mid]) {
+			return;
+		}
+		
+		int[] temArray = new int[end-start];
+		int i = start; // for left Array
+		int j = mid; //  for right Array
+		int tempArrayIndex = 0; // index to add elements to temp array
+		
+		while(i < mid && j < end) {
+			temArray[tempArrayIndex++] = intArray[i] <= intArray[j] ? intArray[i++] : intArray[j++];
+		}
+		
+		// Copy elements in left imaginary sub array in intArray(If left out by previous step to extreme left in the same array
+		                                       //skip start+index elements // copy left over
+		System.arraycopy(intArray, i, intArray, start + tempArrayIndex, mid - i);
+		System.arraycopy(temArray, 0, intArray, start, tempArrayIndex);
+		
+	}
+
+}

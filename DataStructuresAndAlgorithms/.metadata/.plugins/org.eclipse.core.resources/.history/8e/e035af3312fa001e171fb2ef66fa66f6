@@ -1,0 +1,32 @@
+package com.org.dataStructuresCources;
+
+
+public class InsertionSortImpl {
+
+	public static void main(String[] args) {
+		
+		int[] intArray = { 20,35,-15,7,55,1,-22 };
+		
+		for(int indexOfUnsortedArray = 1 ; 
+				indexOfUnsortedArray < intArray.length ; indexOfUnsortedArray++) {
+			int newElement = intArray[indexOfUnsortedArray];
+			int i;
+			if(intArray[indexOfUnsortedArray-1]<newElement) {
+				continue;
+			}else {
+				for(i = indexOfUnsortedArray ; i > 0 ; i--) {
+					if(newElement<intArray[i-1]) {
+						intArray[i]=intArray[i-1];
+					}else {
+						break;
+					}
+				}
+				intArray[i] = newElement;
+			}
+		}
+		for(int i = 0 ; i < intArray.length ; i++) {
+			System.out.println(intArray[i]);
+		}
+	}
+
+}
