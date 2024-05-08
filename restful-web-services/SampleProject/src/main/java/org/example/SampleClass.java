@@ -8,8 +8,19 @@ Given a string str of length N, consisting of ‘(‘ and ‘)‘ only, the task
 Examples: Input: str = “((()))()()” Output: Balanced Input: str = “())((())” Output: Not Balanced
 */
 public class SampleClass {
+// Duplicate Char removal
+	public static void main(String[] args) {
+		String word = "HelloWorld";
+		StringBuilder result = new StringBuilder();
+		char[] characters = word.toCharArray();
+		for(char i : characters) {
+			if(result.indexOf(String.valueOf(i)) == -1) {
+				result.append(i);
+			}
+		}
+		System.out.println(result);
+	}
 
-
-
+//
 
 }
