@@ -16,7 +16,7 @@ public class ApiGatewayConfiguration {
                                 .addRequestHeader("Param", "MyValue"))
                         .uri("http://httpbin.org:80"))
                 .route(p -> p.path("/currency-exchange/**") // hits to this path
-                        .uri("lb://currency-exchange-service")) // redirects to this path but the URL remains as above along with load balancing 
+                        .uri("lb://currency-exchange-service")) // redirects to this path (name in Eureka server) but the URL remains as above along with load balancing 
                 .route(p -> p.path("/currency-conversion/**")
                         .uri("lb://currency-conversion-service"))
                 .route(p -> p.path("/currency-conversion-feign/**")
